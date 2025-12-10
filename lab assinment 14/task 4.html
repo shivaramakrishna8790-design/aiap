@@ -1,0 +1,131 @@
+from flask import Flask, request, render_template_string
+
+app = Flask(__name__)
+
+html_form = '''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Login</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+        }
+        h1 { 
+            text-align: center; 
+            color: #333;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 300;
+        }
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 1rem 1rem 1rem 2.5rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+        .input-icons {
+            position: absolute;
+            left: 1rem;
+            top: 2.8rem;
+            color: #888;
+        }
+        button {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+        .success { text-align: center; color: #28a745; font-size: 1.2rem; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Welcome Back</h1>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <i class="input-icons">👤</i>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <i class="input-icons">🔒</i>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Sign In</button>
+        </form>
+        <div id="success" class="success" style="display: none;"></div>
+    </div>
+    <script>
+        // Simple client-side success display
+        if (window.location.pathname === '/login' && {{ request.form.get('username') or 'null' }}) {
+            document.getElementById('success').style.display = 'block';
+            document.getElementById('success').textContent = 'Login successful! Welcome back!';
+        }
+    </script>
+</body>
+</html>
+'''
+
+@app.route('/')
+def serve_form():
+    return render_template_string(html_form)
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    print(f"✅ User logged in: {username}")  # Server-side print with emoji
+    return f'''
+    <!DOCTYPE html>
+    <html>
+    <head><title>Success</title></head

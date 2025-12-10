@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Info Portal</title>
+
+    <style>
+        /* ---------- GLOBAL STYLING ---------- */
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ---------- HEADER ---------- */
+        header {
+            background: linear-gradient(90deg, #003c8f, #0059c1);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: 0px 3px 8px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.3rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin-top: 8px;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ---------- NAVIGATION ---------- */
+        nav {
+            background-color: #0747a6;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            background-color: #ffda47;
+            color: #003c8f;
+        }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .content-wrapper {
+            max-width: 1000px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            animation: fadeIn 0.7s ease;
+        }
+
+        .content-wrapper h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #003c8f;
+        }
+
+        .content-wrapper ul {
+            margin-top: 10px;
+        }
+
+        .content-wrapper ul li {
+            margin-bottom: 8px;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background-color: #e8e8e8;   /* Light gray */
+            color: #555;
+            text-align: center;
+            padding: 18px;
+            font-size: 0.95rem;
+            margin-top: 60px;
+            border-top: 1px solid #d4d4d4;
+        }
+
+        /* ---------- RESPONSIVE NAVIGATION ---------- */
+        @media (max-width: 650px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Smooth fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ---------- HEADER SECTION ---------- -->
+    <header>
+        <h1>Student Info Portal</h1>
+        <p>Your gateway to academic resources and student services</p>
+    </header>
+
+    <!-- ---------- NAVIGATION ---------- -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Student Profiles</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Results</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+    </nav>
+
+    <!-- ---------- MAIN CONTENT ---------- -->
+    <section class="content-wrapper">
+        <h2>Welcome to the Portal</h2>
+        <p>
+            This Student Info Portal provides streamlined access to essential academic records, 
+            course materials, examination results, and personalized student information.
+            Designed with a clean and modern user interface, our goal is to enhance your 
+            overall learning experience.
+        </p>
+
+        <h3>Portal Features</h3>
+        <ul>
+            <li>✔ Access and update personal student profiles</li>
+            <li>✔ View detailed academic curriculum and course materials</li>
+            <li>✔ Check semester-wise academic performance</li>
+            <li>✔ Download certificates and official documents</li>
+        </ul>
+    </section>
+
+    <!-- ---------- FOOTER ---------- -->
+    <footer>
+        © 2025 Student Info Portal | Designed with Excellence
+    </footer>
+
+</body>
+</html>

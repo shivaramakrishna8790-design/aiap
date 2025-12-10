@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Info Portal - Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #e5e7eb;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1.5px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .input-group input.error {
+            border-color: red;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.8rem;
+            display: none;
+            margin-top: 4px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .login-btn:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <h2>Portal Login</h2>
+
+        <form id="loginForm">
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username">
+                <div class="error-message" id="userError">Username is required.</div>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+                <div class="error-message" id="passError">Password is required.</div>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("loginForm");
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+        const userError = document.getElementById("userError");
+        const passError = document.getElementById("passError");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            let valid = true;
+
+            // Username validation
+            if (username.value.trim() === "") {
+                username.classList.add("error");
+                userError.style.display = "block";
+                valid = false;
+            } else {
+                username.classList.remove("error");
+                userError.style.display = "none";
+            }
+
+            // Password validation
+            if (password.value.trim() === "") {
+                password.classList.add("error");
+                passError.style.display = "block";
+                valid = false;
+            } else {
+                password.classList.remove("error");
+                passError.style.display = "none";
+            }
+
+            // Success
+            if (valid) {
+                alert("Login Successful!");
+            }
+        });
+    </script>
+
+</body>
+</html>
